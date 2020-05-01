@@ -1,4 +1,5 @@
 import * as React from "react";
+import Login from "./login";
 
 interface LoginContainerProps {
   state?: string;
@@ -13,7 +14,7 @@ class LoginContainer extends React.Component<
   LoginContainerState
 > {
   public render() {
-    return <div>Login Container</div>;
+    return <Login/>;
   }
 }
 

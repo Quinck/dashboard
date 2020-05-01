@@ -1,5 +1,5 @@
 import * as React from 'react'
-
+import Station from "./station";
 interface StationContainerProps {
     state?: string;
 }
@@ -12,7 +12,7 @@ class StationContainer extends React.Component<StationContainerProps, StationCon
 
     public render(){
         return(
-            <div>Station Container</div>
+            <Station/>
         )
     }
 

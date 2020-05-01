@@ -14,7 +14,7 @@ class Home extends React.Component<HomeProps, HomeState>{
 
     public render() {
         return (
-            <div>home</div>
+            <div>Home</div>
         )
     }
 

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Home from './home';
 
 interface HomeContainerProps {
     state?: string;
@@ -12,7 +13,7 @@ class HomeContainer extends React.Component<HomeContainerProps, HomeContainerSta
 
     public render(){
         return(
-            <div>Home Container</div>
+            <Home/>
         )
     }
 

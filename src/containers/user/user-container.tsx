@@ -1,5 +1,5 @@
 import * as React from 'react'
-
+import User from './user'
 interface UserContainerProps {
     state?: string;
 }
@@ -12,7 +12,7 @@ class UserContainer extends React.Component<UserContainerProps, UserContainerSta
 
     public render(){
         return(
-            <div>User Container</div>
+            <User/>
         )
     }
 
