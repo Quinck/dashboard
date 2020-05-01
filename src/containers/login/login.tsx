@@ -5,18 +5,17 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 interface LoginProps {
-  state?: string;
-}
-
-interface LoginState {
-  prop?: string;
+  login: ()=>void;
+  changedUsername: (username: string) => void;
+  changedPassword: (password: string) => void;
 }
 
 class Login extends React.Component<
-  LoginProps,
-  LoginState
+  LoginProps
 > {
+
   public render() {
+    const { login, changedUsername, changedPassword } = this.props;
     return (
       <div className="login-content">
         <div className="login-title">
@@ -31,6 +30,7 @@ class Login extends React.Component<
                 label="Username"
                 autoComplete="current-username"
                 variant="outlined"
+                onChange={(e) => changedUsername(e.target.value)}
               />
             </div>
             <div className="login-field">
@@ -40,10 +40,11 @@ class Login extends React.Component<
                 type="password"
                 autoComplete="current-password"
                 variant="outlined"
+                onChange={(e) => changedPassword(e.target.value)}
               />
             </div>
             <div className="login-field">
-              <Button variant="contained" color="primary">
+              <Button variant="contained" color="primary" onClick={login}>
                 Login
               </Button>
             </div>
