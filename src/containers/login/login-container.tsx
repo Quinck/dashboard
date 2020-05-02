@@ -27,7 +27,7 @@ class LoginContainer extends React.Component<{}, LoginContainerState> {
 
   loginIn = () => {
     const {username, password} = this.state;
-    if (username && password) window.location.replace("/home");
+    if (username==='umberto.ciriello' && password==='umberto') window.location.replace("/home");
   };
 
   changedusername = (newUsername: string) => {

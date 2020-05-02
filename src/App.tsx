@@ -8,10 +8,15 @@ import LoginContainer from './containers/login/login-container';
 import HomeContainer from './containers/home/home-container';
 import UserContainer from './containers/user/user-container';
 import StationContainer from './containers/station/station-container';
+import PageNotFound from './containers/page-not-found/page-not-found';
 
 class App extends React.Component<{},{}> {
 
+  
+
   public render(){
+   
+
     return (
     <Router>
       <div>
@@ -28,6 +33,7 @@ class App extends React.Component<{},{}> {
           <Route path="/station">
             <StationContainer />
           </Route>
+          <Route component={PageNotFound}/>
         </Switch>
       </div>
     </Router>

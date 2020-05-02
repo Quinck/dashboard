@@ -48,6 +48,14 @@ class HomeContainer extends React.Component<{}, HomeContainerState>{
         document.addEventListener('click', this.handleClickOutside);
     }
 
+    goToUser(){
+        window.location.href = ('/user');
+    }
+
+    goToStation() {
+        window.location.href = ('/station');
+    }
+
     public render(){
         return(
             <Home
@@ -55,7 +63,9 @@ class HomeContainer extends React.Component<{}, HomeContainerState>{
                 handleClickOutside={this.handleClickOutside}
                 handleShowLogout={this.handleShowLogout}
                 goHome={this.goHome}
-                logout={this.logout}/>
+                logout={this.logout}
+                goToUser={this.goToUser}
+                goToStation={this.goToStation}/>
         )
     }
 

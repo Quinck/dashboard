@@ -1,0 +1,35 @@
+.home-card-container{
+    display: flex;
+    background-color: #A9A9A9;
+    font-family: Roboto;
+    font-size: 24px;
+    height: 100px;
+    width: 400px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin:8px;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+}
+
+.home-card-container:hover{
+    height: 102px;
+    width: 410px;
+    cursor: pointer;
+}
+
+.home-card-content{
+    width: 100%;
+    display: flex;
+}
+
+
+.home-card-container .name{
+    padding-left: 18px;
+}
+
+.home-card-container .quantity{
+    padding-right: 18px;
+    padding-left: 6px;
+}

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './header.css';
-import logo from '../assets/logo.png'
-import userIcon from '../assets/user-icon.png'
-import logoutIcon from '../assets/logout-icon.png'
+import logo from '../../assets/logo.png'
+import userIcon from '../../assets/user-icon.png'
+import logoutIcon from '../../assets/logout-icon.png'
 
 export interface HeaderProps {
     user: string;
@@ -15,10 +15,9 @@ export interface HeaderProps {
 }
 
 
-class Header extends React.Component<HeaderProps>{
 
-    public render() {
-        const { logoutVisible, goHome, handleShowLogout, user, logout } = this.props;
+    const Header = (props: HeaderProps) => {
+        const { logoutVisible, goHome, handleShowLogout, user, logout } = props;
         return (
                 <>
                     <div className='header-container' >
@@ -36,8 +35,8 @@ class Header extends React.Component<HeaderProps>{
                         </div>
                     </div>
                     {logoutVisible && 
-                    <div className='logout-container' onClick={logout}>
-                        <div className='logout-content'>
+                    <div className='logout-container'>
+                        <div className='logout-content' onClick={logout}>
                             <img className="logout-icon" src={logoutIcon} alt="logoutIcon" />
                             <div>logout</div>
                         </div>
@@ -46,7 +45,6 @@ class Header extends React.Component<HeaderProps>{
                 </>
         );
     }
-}
 
 
 export default Header; 
