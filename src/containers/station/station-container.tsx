@@ -1,18 +1,62 @@
 import * as React from 'react'
-import Station from "./station";
-interface StationContainerProps {
-    state?: string;
-}
+import Station from './station';
 
 interface StationContainerState {
-    prop?: string;
+    logoutVisible: boolean;
+    loggedUser: string;
 }
 
-class StationContainer extends React.Component<StationContainerProps, StationContainerState>{
+class StationContainer extends React.Component<{}, StationContainerState>{
 
-    public render(){
-        return(
-            <Station/>
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            logoutVisible: false,
+            loggedUser: 'Umberto'
+        }
+    }
+
+    componentDidMount() {
+        document.addEventListener('click', this.handleClickOutside);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('click', this.handleClickOutside);
+    }
+
+    handleClickOutside = () => {
+        this.setState({
+            logoutVisible: false
+        });
+    }
+
+    handleShowLogout = () => {
+        document.removeEventListener('click', this.handleClickOutside);
+        this.setState({
+            logoutVisible: !this.state.logoutVisible
+        });
+        document.addEventListener('click', this.handleClickOutside);
+    }
+
+    goHome = () => {
+        window.location.href = ('/home');
+    }
+
+    logout = () => {
+        document.removeEventListener('click', this.handleClickOutside);
+        window.location.href = ('/login');
+        document.addEventListener('click', this.handleClickOutside);
+    }
+
+
+    public render() {
+        return (
+            <Station
+                {...this.state}
+                handleClickOutside={this.handleClickOutside}
+                handleShowLogout={this.handleShowLogout}
+                goHome={this.goHome}
+                logout={this.logout} />
         )
     }
 
