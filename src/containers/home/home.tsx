@@ -1,20 +1,29 @@
 import * as React from 'react'
 import './home.css';
+import Header  from '../../components/header';
 
 
 interface HomeProps {
-    state?: string;
+    logoutVisible: boolean;
+    loggedUser: string;
+    handleClickOutside: () => void;
+    handleShowLogout: () => void;
+    goHome: () => void; 
+    logout: () => void;
 }
 
-interface HomeState {
-    prop?: string;
-}
-
-class Home extends React.Component<HomeProps, HomeState>{
+class Home extends React.Component<HomeProps>{
 
     public render() {
+        const { loggedUser, goHome, logout } = this.props;
         return (
-            <div>Home</div>
+            <div className='home-container'>
+                <Header
+                    {...this.props}
+                    user={loggedUser}
+                    goHome={goHome}
+                    onClickLogout={logout}/>
+            </div>
         )
     }
 

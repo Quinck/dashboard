@@ -5,7 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 interface LoginProps {
-  login: ()=>void;
+  login: () => void;
   changedUsername: (username: string) => void;
   changedPassword: (password: string) => void;
 }
@@ -22,7 +22,7 @@ class Login extends React.Component<
           <img className="login-logo" src={logo} alt="Logo" /> uinck Dashboard
           Login
         </div>
-        <div className="login-area">
+        <div className="login-area" >
           <div className="login-area-form">
             <div className="login-field">
               <TextField
