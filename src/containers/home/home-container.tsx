@@ -1,52 +1,8 @@
 import * as React from 'react'
 import Home from './home';
+import BasePage from '../base-page/base-page'
 
-interface HomeContainerState {
-    logoutVisible: boolean;
-    loggedUser: string;
-}
-
-class HomeContainer extends React.Component<{}, HomeContainerState>{
-
-    constructor(props: any) {
-        super(props);
-        this.state = {
-            logoutVisible: false,
-            loggedUser: 'Umberto'
-        }
-    }
-
-    componentDidMount() {
-        document.addEventListener('click', this.handleClickOutside);
-    }
-
-    componentWillUnmount() {
-        document.removeEventListener('click', this.handleClickOutside);
-    }
-
-    handleClickOutside = () => {
-        this.setState({
-            logoutVisible: false
-        });
-    }
-
-    handleShowLogout = () => {
-        document.removeEventListener('click', this.handleClickOutside);
-        this.setState({
-            logoutVisible: !this.state.logoutVisible
-        });
-        document.addEventListener('click', this.handleClickOutside);
-    }
-
-    goHome = () => {
-        window.location.href=('/home');
-    }
-
-    logout = () => {
-        document.removeEventListener('click', this.handleClickOutside);
-        window.location.href=('/login');
-        document.addEventListener('click', this.handleClickOutside);
-    }
+class HomeContainer extends React.Component<{}, {}>{
 
     goToUser(){
         window.location.href = ('/user');
@@ -57,15 +13,16 @@ class HomeContainer extends React.Component<{}, HomeContainerState>{
     }
 
     public render(){
+
         return(
-            <Home
-                {...this.state}
-                handleClickOutside={this.handleClickOutside}
-                handleShowLogout={this.handleShowLogout}
-                goHome={this.goHome}
-                logout={this.logout}
-                goToUser={this.goToUser}
-                goToStation={this.goToStation}/>
+            <BasePage
+                    component={
+                    <Home
+                        {...this.state}
+                        goToUser={this.goToUser}
+                        goToStation={this.goToStation} />
+                    }
+            /> 
         )
     }
 
