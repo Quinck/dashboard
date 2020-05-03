@@ -42,6 +42,10 @@ class UserContainer extends React.Component<{}, UserContainerState>{
         return users.filter((user: UserType) => user.sex === gender);
     }
 
+    getUsersWithAge = (users: UserType[], age: number): UserType[] => {
+        return users.filter((user: UserType) => user.age >= age && user.age <= age + 5);
+    }
+
     generatesFiltersGroups = () => {
         const {selectedFilters} = this.state;
         if (selectedFilters.length === 0){
@@ -57,21 +61,41 @@ class UserContainer extends React.Component<{}, UserContainerState>{
             if(this.state.selectedFilters[0] === UserFilterType.SEX){
                 const newGroups = [];
                 const males: FilteredUsersGroup = {
-                    selectedFiltersLabels: ['MALE'],
+                    selectedFiltersLabels: ['SEX: MALE'],
                     users: this.getUsersWithGender(usersData.users,'M')
                 };
                 const females: FilteredUsersGroup = {
-                    selectedFiltersLabels: ['FEMALE'],
+                    selectedFiltersLabels: ['SEX: FEMALE'],
                     users: this.getUsersWithGender(usersData.users, 'F')
                 };
                 newGroups.push(males);
                 newGroups.push(females);
                 this.setState({
                     filtersGroups: newGroups
-                })
+                });
             }
             if (this.state.selectedFilters[0] === UserFilterType.AGE) {
-
+                const newGroups = [];
+                let maxAge = 0;
+                let minAge = 200;
+                usersData.users.forEach((user)=>{
+                    if(user.age > maxAge)
+                        maxAge = user.age;
+                    if (user.age < minAge)
+                        minAge = user.age;
+                });
+               
+                for(let i = minAge; i<maxAge; i=i+6){
+                    const finalAge = i+5;
+                    const ageElement: FilteredUsersGroup = {
+                        selectedFiltersLabels: ['AGE: ' + i + '-' + finalAge],
+                        users: this.getUsersWithAge(usersData.users, i)
+                    };
+                    newGroups.push(ageElement);
+                }
+                this.setState({
+                    filtersGroups: newGroups
+                }); 
             }
         }
         // both filters selected case

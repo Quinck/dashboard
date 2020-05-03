@@ -64,7 +64,7 @@ class User extends React.Component<UserProps>{
                             )}
                         </div> 
                     )}
-                    
+                    <div className='padding-bottom'/>
                 </div>
             </div>
         )
