@@ -1,0 +1,24 @@
+.separator-filter-group-container{
+    display: flex;
+    align-items: flex-end;
+    padding: 15px;
+}
+
+.separator-filter-group{
+    width: 450px;
+    height: 2px;
+    background-color: grey;
+}
+
+.separator-filter-group-label-left{
+    position: absolute;
+    margin-left: 20px;
+    background-color: #F5F5F5;
+
+}
+
+.separator-filter-group-label-right{
+    position: absolute;
+    margin-left: 380px;
+    background-color: #F5F5F5;
+}
