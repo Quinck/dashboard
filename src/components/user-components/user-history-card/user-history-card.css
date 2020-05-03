@@ -1,0 +1,32 @@
+.user-history-card-container {   
+    width: 400px;
+    height: 160px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    border: 2px solid #8B4513;
+    background-color: #DEB887;
+}
+
+.user-history-card-content{
+    padding-left: 15px;
+    width: 100%;
+}
+
+.user-history-card-content div{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.station-id{
+    font-weight: bold;
+}
+
+.current-session-label{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: red;
+    font-weight: bold;
+}

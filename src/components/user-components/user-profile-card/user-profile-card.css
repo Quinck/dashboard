@@ -1,0 +1,26 @@
+.user-profile-card-container{
+    width: 400px;
+    height: 80px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    border: 2px solid #1e90ff;
+}
+
+.male{
+    background-color: #08e8de;
+}
+
+.female{
+    background-color: #fadadd;
+}
+
+.user-profile-card-content {
+    padding-left: 15px;
+}
+
+.user-profile-card-content div{
+    padding-top: 6px;
+    padding-bottom:6px;
+}

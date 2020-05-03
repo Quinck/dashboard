@@ -1,6 +1,7 @@
 export enum GenderType {
     Male,
     Female,
+    Others
 }
 
 export interface User {

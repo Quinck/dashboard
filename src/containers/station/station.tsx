@@ -1,6 +1,5 @@
 import * as React from 'react'
 import './station.css';
-import Header from '../../components/header/header';
 
 interface StationProps {
     prop?: string;
