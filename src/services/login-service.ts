@@ -1,5 +1,4 @@
 import authorizedUsers from '../api/mocked-data/authorized-users'
-import { rejects } from 'assert';
 
 export class LoginService {
 
