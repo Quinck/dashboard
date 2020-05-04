@@ -53,9 +53,10 @@
     display: flex;
     justify-content: flex-end;
     padding-right: 0px;
-    z-index: 1;
+    z-index: 20;
     position: absolute;
     width: 100%;
+    padding-top:70px;
 }
 
 .logout-content {
