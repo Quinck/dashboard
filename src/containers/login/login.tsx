@@ -1,10 +1,13 @@
 import * as React from "react";
 import './login.css';
 import logo from '../../assets/logo.png'
+import loading from '../../assets/loading.gif'
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 interface LoginProps {
+  verifingAuthorization: boolean;
+  authError: boolean;
   login: () => void;
   changedUsername: (username: string) => void;
   changedPassword: (password: string) => void;
@@ -15,7 +18,7 @@ class Login extends React.Component<
 > {
 
   public render() {
-    const { login, changedUsername, changedPassword } = this.props;
+    const { login, changedUsername, changedPassword, authError, verifingAuthorization } = this.props;
     return (
       <div className="login-content">
         <div className="login-title">
@@ -26,6 +29,8 @@ class Login extends React.Component<
           <div className="login-area-form">
             <div className="login-field">
               <TextField
+                error={authError}
+                helperText=""
                 id="username-field"
                 label="Username"
                 autoComplete="current-username"
@@ -35,6 +40,8 @@ class Login extends React.Component<
             </div>
             <div className="login-field">
               <TextField
+                error={authError}
+                helperText={authError && "Username or Password invalid"}
                 id="password-field"
                 label="Password"
                 type="password"
@@ -43,10 +50,17 @@ class Login extends React.Component<
                 onChange={(e) => changedPassword(e.target.value)}
               />
             </div>
-            <div className="login-field">
-              <Button variant="contained" color="primary" onClick={login}>
-                Login
-              </Button>
+            <div className="login-field login-button-area">
+              <div>
+                <Button variant="contained" color="primary" onClick={login}>
+                  Login
+                </Button>
+              </div>
+              {verifingAuthorization && 
+                <div>
+                  <img className='loading-gif' src={loading}/>
+                </div>
+              }
             </div>
           </div>
         </div>

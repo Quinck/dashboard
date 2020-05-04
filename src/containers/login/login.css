@@ -38,3 +38,13 @@
 .login-field{
   padding-top: 10px;
 }
+
+.login-button-area{
+  display: flex;
+  align-self: flex-start;
+}
+
+.loading-gif{
+  width: 40px;
+  padding-left: 20px;
+}
