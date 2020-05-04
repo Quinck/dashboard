@@ -1,9 +1,12 @@
 import * as React from 'react'
 import Header from '../../components/header/header';
 import './base-page.css'
+import LoadingModal from '../../components/loading-modal/loading-modal';
 
 interface BasePageProps {
     component: any;
+    loadingData?: boolean;
+    loadingMessage?: string;
 }
 
 interface BasePageState {
@@ -54,6 +57,7 @@ class BasePage extends React.Component<BasePageProps, BasePageState>{
     }
 
     public render() {
+        const { loadingData, loadingMessage} = this.props;
         return (
             <div className='base-page-container'>
                 <Header
@@ -64,9 +68,18 @@ class BasePage extends React.Component<BasePageProps, BasePageState>{
                     onClickLogout={this.logout}
                     logout={this.logout}
                     goHome={this.goHome} />
-                <div className='base-page-component'>
-                    {this.props.component}
-                </div>
+                {!loadingData && 
+                    <div className='base-page-component'>
+                        {this.props.component}
+                    </div>
+                }
+                { loadingData && loadingMessage && 
+                    <div className='loading-modal-container'>
+                        <LoadingModal
+                            loadingMessage={loadingMessage}
+                        />   
+                    </div>
+                }
             </div>
         )
     }

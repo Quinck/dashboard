@@ -1,0 +1,20 @@
+.loading-modal{
+    width: 350px;
+    height: 350px;
+    background-color:#DCDCDC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 10px 10px 5px 0px rgba(168,159,168,1);
+}
+
+.loading-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loading-modal-container .loading-message{
+    padding-top: 30px;
+    font-weight: bold;
+}

@@ -4,6 +4,7 @@ import { FilteredUsersGroup} from '../../models/user'
 import UserTab from '../../components/user-components/user-tab/user-tab'
 import { UserFilterType } from '../../models/user'
 import SeparatorFilteredGroup from '../../components/separator-filtered-group/separator-filtered-group';
+import LoadingModal from '../../components/loading-modal/loading-modal';
 
 interface UserProps {
     filtersGroups: FilteredUsersGroup[],
