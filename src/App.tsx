@@ -12,7 +12,12 @@ import PageNotFound from './containers/page-not-found/page-not-found';
 
 class App extends React.Component<{},{}> {
 
-  
+  componentDidMount(){
+    console.log(window.location.href);
+    if (window.location.href === ('http://localhost:3000/')){
+      window.location.href=('/login');
+    }
+  }
 
   public render(){
    

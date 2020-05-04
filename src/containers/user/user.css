@@ -10,6 +10,7 @@
     flex-direction: column;
     align-items: center;
     padding-top: 30px;
+    padding-bottom: 20px;
 }
 
 .registered-users-title{
@@ -52,8 +53,4 @@
 
 .selected-filter{
     background-color: #C0C0C0;
-}
-
-.padding-bottom{
-    padding-bottom: 20px;
 }

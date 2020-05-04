@@ -11,6 +11,8 @@ export interface UserContainerState{
     filtersGroups: FilteredUsersGroup[];
     registeredUsers: UserType[];
     loadingData: boolean;
+    selectedUser?: UserType;
+    showModal: boolean;
 }  
 
 class UserContainer extends React.Component<{}, UserContainerState>{
@@ -22,6 +24,7 @@ class UserContainer extends React.Component<{}, UserContainerState>{
             filtersGroups: [],
             registeredUsers: [],
             loadingData: true,
+            showModal: false
         }
     }
 
@@ -127,13 +130,29 @@ class UserContainer extends React.Component<{}, UserContainerState>{
 
     }
 
+    onSelectedUser = (userId: string) => {
+        this.setState({
+            showModal: true,
+            selectedUser: this.state.registeredUsers.find(user => user.userId === userId)
+        });
+    }
+
+    onCloseModal = () => {
+        this.setState({
+            showModal: false,
+        });
+    }
+    
     public render() {
         return (
             <BasePage
                 component={
                     <User 
                         {...this.state}
-                        onUserFilterSelected={this.handleFilterSelected} />
+                        onUserFilterSelected={this.handleFilterSelected} 
+                        onSelectedUser={this.onSelectedUser}
+                        onCloseModal={this.onCloseModal}
+                        />
                 }
                 loadingData={this.state.loadingData}
                 loadingMessage={'downloading user data, please wait...'}

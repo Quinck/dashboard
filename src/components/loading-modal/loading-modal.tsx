@@ -12,7 +12,7 @@ const LoadingModal = (props: LoadingModal) => {
         <div className='loading-modal'>
             <div className='loading-modal-content'>
                 <div className='loading-image'>
-                    <img src={loadingImage}/>
+                    <img src={loadingImage} alt="loadingImage"/>
                 </div>
                 <div className='loading-message'>
                     {loadingMessage}

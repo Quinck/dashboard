@@ -1,16 +1,13 @@
 import * as React from 'react';
 import './user-history-card.css';
+import { UsageSummary } from '../../../models/user'
 
 export interface UserHistoryCardProps {
-   startDate: Date,
-   endDate?: Date,
-   startPosition: string,
-   endPosition?: string,
-   stationId: string
+    usageSummary: UsageSummary
 }
 
 const UserHistoryCard = (props: UserHistoryCardProps) => {
-    const { startDate, endDate, startPosition, endPosition, stationId } = props;
+    const { usageSummary } = props;
 
     function formatDate(date: Date): string{
         let year = date.getFullYear() + '';
@@ -35,26 +32,26 @@ const UserHistoryCard = (props: UserHistoryCardProps) => {
     return (
         <div className='user-history-card-container'>
             <div className='user-history-card-content'>
-                {!endDate && !endPosition &&
+                {!usageSummary.endDate && !usageSummary.endPosition &&
                     <div className='current-session-label'>CURRENT SESSION</div>
                 }
                 <div className='station-id'>
-                    {stationId}
+                    {usageSummary.stationId}
                 </div>
                 <div>
-                    location: {startPosition}
+                    location: {usageSummary.startPosition}
                 </div>
                 <div>
-                    start: {formatDate(startDate)} 
+                    start: {formatDate(usageSummary.startDate)} 
                 </div>
-                {endPosition && 
+                {usageSummary.endPosition && 
                     <div>
-                        location: {endPosition}
+                    location: {usageSummary.endPosition}
                     </div>
                 }
-                {endDate && 
+                {usageSummary.endDate && 
                     <div>
-                        end:  {formatDate(endDate)}
+                    end:  {formatDate(usageSummary.endDate)}
                     </div>
                 }
             </div>
