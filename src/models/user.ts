@@ -18,6 +18,11 @@ export interface UserType {
     sex: string,
 }
 
+export interface UserCompleteType {
+    userInfo: UserType,
+    usageSummary: UsageSummary[]
+}
+
 export interface FilteredUsersGroup {
     selectedFiltersLabels: string[],
     users: UserType[]

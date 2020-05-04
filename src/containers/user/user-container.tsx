@@ -1,7 +1,7 @@
 import * as React from 'react'
 import User from './user';
 import BasePage from '../base-page/base-page'
-import { UserType } from '../../models/user'
+import { UserType, UserCompleteType } from '../../models/user'
 import { FilteredUsersGroup } from '../../models/user'
 import {UserFilterType} from '../../models/user'
 import { UserService } from '../../services/user-service';
@@ -11,7 +11,7 @@ export interface UserContainerState{
     filtersGroups: FilteredUsersGroup[];
     registeredUsers: UserType[];
     loadingData: boolean;
-    selectedUser?: UserType;
+    selectedUser?: UserCompleteType;
     showModal: boolean;
 }  
 
@@ -132,9 +132,16 @@ class UserContainer extends React.Component<{}, UserContainerState>{
 
     onSelectedUser = (userId: string) => {
         this.setState({
-            showModal: true,
-            selectedUser: this.state.registeredUsers.find(user => user.userId === userId)
-        });
+            loadingData: true,
+        }, ()=>{
+            this.userService.getCompleteUserInfo(userId).then( (user) => {
+                this.setState({
+                    loadingData: false,
+                    showModal: true,
+                    selectedUser: user
+                });
+            });  
+        }); 
     }
 
     onCloseModal = () => {
@@ -152,6 +159,7 @@ class UserContainer extends React.Component<{}, UserContainerState>{
                         onUserFilterSelected={this.handleFilterSelected} 
                         onSelectedUser={this.onSelectedUser}
                         onCloseModal={this.onCloseModal}
+                        
                         />
                 }
                 loadingData={this.state.loadingData}

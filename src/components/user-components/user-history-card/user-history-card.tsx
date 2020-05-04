@@ -36,7 +36,7 @@ const UserHistoryCard = (props: UserHistoryCardProps) => {
                     <div className='current-session-label'>CURRENT SESSION</div>
                 }
                 <div className='station-id'>
-                    {usageSummary.stationId}
+                     Station: {usageSummary.stationId}
                 </div>
                 <div>
                     location: {usageSummary.startPosition}

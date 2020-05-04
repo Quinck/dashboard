@@ -13,3 +13,15 @@
     font-weight: bold;
     margin-top: 20px;
 }
+
+.no-usage-text{
+    font-weight: bold;
+}
+
+.user-history-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 585px;
+    overflow: auto;
+}

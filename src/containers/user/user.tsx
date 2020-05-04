@@ -1,6 +1,6 @@
 import * as React from 'react'
 import './user.css';
-import { FilteredUsersGroup, UserType} from '../../models/user'
+import { FilteredUsersGroup, UserCompleteType} from '../../models/user'
 import UserTab from '../../components/user-components/user-tab/user-tab'
 import { UserFilterType } from '../../models/user'
 import SeparatorFilteredGroup from '../../components/separator-filtered-group/separator-filtered-group';
@@ -11,7 +11,7 @@ interface UserProps {
     selectedFilters: UserFilterType[],
     onUserFilterSelected: (selectedFilter: UserFilterType) => void,
     showModal: boolean,
-    selectedUser?: UserType;
+    selectedUser?: UserCompleteType;
     onCloseModal: () => void;
     onSelectedUser: (userId: string) => void
 }
@@ -71,13 +71,14 @@ class User extends React.Component<UserProps>{
                             </div> 
                         )}
                     </div>
+                }   
+                {selectedUser&&
+                    <FullscreenModal
+                        onClose={onCloseModal}
+                        show={showModal}
+                        content={<UserOverview user={selectedUser }/>}
+                     />
                 }
-                
-                <FullscreenModal
-                    onClose={onCloseModal}
-                    show={showModal}
-                    content={<UserOverview userData={selectedUser? selectedUser.userId : ''}/>}
-                />
             </div>
         )
     }
