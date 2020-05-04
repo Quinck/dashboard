@@ -1,6 +1,8 @@
 import * as React from "react";
 import Login from "./login";
 import { LoginService } from '../../services/login-service';
+import loginCredentialService from '../../services/login-credential-service';
+
 
 interface LoginContainerState {
   username: string;
@@ -12,7 +14,7 @@ interface LoginContainerState {
 class LoginContainer extends React.Component<{}, LoginContainerState> {
 
   loginService : LoginService = new LoginService();
-  
+
   constructor(props:any){
     super(props);
     this.state = {
@@ -37,7 +39,10 @@ class LoginContainer extends React.Component<{}, LoginContainerState> {
     this.setState({ verifingAuthorization: true },
       ()=>{
             this.loginService.validateLoginData(username,password).then((displayedName)=>{
-                if (displayedName) window.location.replace("/home");
+                if (displayedName) {
+                  loginCredentialService.setValue(displayedName);
+                  window.location.replace("/home");
+                }
               }).catch(()=>{
                 this.setState({ authError: true, verifingAuthorization: false});
               });

@@ -2,6 +2,7 @@ import * as React from 'react'
 import Header from '../../components/header/header';
 import './base-page.css'
 import LoadingModal from '../../components/loading-modal/loading-modal';
+import LoginCredentialService from '../../services/login-credential-service';
 
 interface BasePageProps {
     component: any;
@@ -20,7 +21,7 @@ class BasePage extends React.Component<BasePageProps, BasePageState>{
         super(props);
         this.state = {
             logoutVisible: false,
-            loggedUser: 'Umberto'
+            loggedUser: LoginCredentialService.getValue()
         }
     }
 

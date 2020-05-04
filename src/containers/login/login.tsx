@@ -22,7 +22,7 @@ class Login extends React.Component<
     return (
       <div className="login-content">
         <div className="login-title">
-          <img className="login-logo" src={logo} alt="Logo" /> uinck Dashboard
+          <img className="login-logo" src={logo} alt="Logo" />  Dashboard
           Login
         </div>
         <div className="login-area" >
@@ -58,7 +58,7 @@ class Login extends React.Component<
               </div>
               {verifingAuthorization && 
                 <div>
-                  <img className='loading-gif' src={loading}/>
+                  <img className='loading-gif' src={loading} alt='loadingGif'/>
                 </div>
               }
             </div>
