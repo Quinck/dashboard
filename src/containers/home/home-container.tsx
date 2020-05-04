@@ -4,10 +4,12 @@ import BasePage from '../base-page/base-page'
 
 class HomeContainer extends React.Component<{}, {}>{
 
-    goToUser(){
+    goToRegisteredUser(){
         window.location.href = ('/user');
     }
-
+    goToActiveUser() {
+        window.location.href = ('/user?active=true');
+    }
     goToStation() {
         window.location.href = ('/station');
     }
@@ -19,7 +21,8 @@ class HomeContainer extends React.Component<{}, {}>{
                     component={
                     <Home
                         {...this.state}
-                        goToUser={this.goToUser}
+                        goToRegisteredUser={this.goToRegisteredUser}
+                        goToActiveUser={this.goToActiveUser}
                         goToStation={this.goToStation} />
                     }
             /> 

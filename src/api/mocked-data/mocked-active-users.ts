@@ -1,5 +1,5 @@
 export default {
-    "activeUsers": [
+    "users": [
         {
             "userId": "52312131",
             "age": 20,

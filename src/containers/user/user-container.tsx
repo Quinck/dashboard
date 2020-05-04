@@ -9,10 +9,11 @@ import { UserService } from '../../services/user-service';
 export interface UserContainerState{
     selectedFilters: UserFilterType[];
     filtersGroups: FilteredUsersGroup[];
-    registeredUsers: UserType[];
+    loadedUsers: UserType[];
     loadingData: boolean;
     selectedUser?: UserCompleteType;
     showModal: boolean;
+    activeUser: boolean;
 }  
 
 class UserContainer extends React.Component<{}, UserContainerState>{
@@ -22,16 +23,29 @@ class UserContainer extends React.Component<{}, UserContainerState>{
         this.state={
             selectedFilters: [] ,
             filtersGroups: [],
-            registeredUsers: [],
+            loadedUsers: [],
             loadingData: true,
-            showModal: false
+            showModal: false,
+            activeUser: false
         }
     }
 
     componentDidMount(){
-        this.userService.getRegisteredUsers()
-            .then(users => this.setState({ registeredUsers: users, loadingData:false }, 
-                this.generatesFiltersGroups));
+        let url = new URL(window.location.href);
+        let activeUser = url.searchParams.get("active");
+        this.setState({
+            activeUser: activeUser ? true : false
+        }, () => {
+            if(this.state.activeUser){
+                this.userService.getActiveUsers()
+                    .then(users => this.setState({ loadedUsers: users, loadingData: false },
+                        this.generatesFiltersGroups));
+            } else {
+                this.userService.getRegisteredUsers()
+                    .then(users => this.setState({ loadedUsers: users, loadingData:false }, 
+                        this.generatesFiltersGroups));
+            }
+        });
     }
 
     handleFilterSelected = (filter: UserFilterType) =>{
@@ -56,11 +70,11 @@ class UserContainer extends React.Component<{}, UserContainerState>{
     }
 
     generatesFiltersGroups = () => {
-        const {selectedFilters, registeredUsers} = this.state;
+        const {selectedFilters, loadedUsers} = this.state;
         const newGroups = [];
         let maxAge = 0;
         let minAge = 200;
-        registeredUsers.forEach((user) => {
+        loadedUsers.forEach((user) => {
             if (user.age > maxAge)
                 maxAge = user.age;
             if (user.age < minAge)
@@ -70,7 +84,7 @@ class UserContainer extends React.Component<{}, UserContainerState>{
             this.setState({
                 filtersGroups: [{
                     selectedFiltersLabels:[],
-                    users: registeredUsers
+                    users: loadedUsers
                 }]
             })
         } 
@@ -81,11 +95,11 @@ class UserContainer extends React.Component<{}, UserContainerState>{
                 
                 const males: FilteredUsersGroup = {
                     selectedFiltersLabels: ['SEX: MALE'],
-                    users: this.getUsersWithGender(registeredUsers,'M')
+                    users: this.getUsersWithGender(loadedUsers,'M')
                 };
                 const females: FilteredUsersGroup = {
                     selectedFiltersLabels: ['SEX: FEMALE'],
-                    users: this.getUsersWithGender(registeredUsers, 'F')
+                    users: this.getUsersWithGender(loadedUsers, 'F')
                 };
                 newGroups.push(males);
                 newGroups.push(females);
@@ -98,7 +112,7 @@ class UserContainer extends React.Component<{}, UserContainerState>{
                     const finalAge = i+5;
                     const ageElement: FilteredUsersGroup = {
                         selectedFiltersLabels: ['AGE: ' + i + '-' + finalAge],
-                        users: this.getUsersWithAge(registeredUsers, i)
+                        users: this.getUsersWithAge(loadedUsers, i)
                     };
                     newGroups.push(ageElement);
                 }
@@ -114,11 +128,11 @@ class UserContainer extends React.Component<{}, UserContainerState>{
                 const finalAge = i + 5;
                 const ageMaleElement: FilteredUsersGroup = {
                     selectedFiltersLabels: ['AGE: ' + i + '-' + finalAge, 'SEX: MALE'],
-                    users: this.getUsersWithGender(this.getUsersWithAge(registeredUsers, i),'M')
+                    users: this.getUsersWithGender(this.getUsersWithAge(loadedUsers, i),'M')
                 };
                 const ageFemaleElement: FilteredUsersGroup = {
                     selectedFiltersLabels: ['AGE: ' + i + '-' + finalAge, 'SEX: FEMALE'],
-                    users: this.getUsersWithGender(this.getUsersWithAge(registeredUsers, i), 'F')
+                    users: this.getUsersWithGender(this.getUsersWithAge(loadedUsers, i), 'F')
                 };
                 newGroups.push(ageMaleElement);
                 newGroups.push(ageFemaleElement);

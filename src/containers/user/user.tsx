@@ -13,21 +13,22 @@ interface UserProps {
     showModal: boolean,
     selectedUser?: UserCompleteType;
     onCloseModal: () => void;
-    onSelectedUser: (userId: string) => void
+    onSelectedUser: (userId: string) => void;
+    activeUser: boolean;
 }
 
 class User extends React.Component<UserProps>{
 
     public render() {
 
-        const { filtersGroups, selectedFilters, onUserFilterSelected, showModal, selectedUser, onCloseModal, onSelectedUser } = this.props;
+        const { activeUser, filtersGroups, selectedFilters, onUserFilterSelected, showModal, selectedUser, onCloseModal, onSelectedUser } = this.props;
 
         return (
             <div className='user-container'>
                 {!showModal && 
                     <div className='user-content'>
-                        <div className='registered-users-title'>Registered Users</div>
-                        <div className='registered-users-filters-container'>
+                    <div className='users-title'>{activeUser ? 'Active Users' : 'Registered Users' }</div>
+                        <div className='users-filters-container'>
                             <div>
                                 Group By:
                             </div>

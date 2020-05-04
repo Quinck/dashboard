@@ -3,14 +3,15 @@ import './home.css';
 import HomeCard from '../../components/home-card/home-card';
 
 interface HomeProps {
-    goToUser: () => void;
+    goToRegisteredUser: () => void;
+    goToActiveUser: () => void;
     goToStation: () => void;
 }
 
 class Home extends React.Component<HomeProps>{
 
     public render() {
-        const { goToUser, goToStation } = this.props;
+        const { goToActiveUser, goToRegisteredUser, goToStation } = this.props;
         return (
             <div className='home-container'>
                 <div className='home-content'>
@@ -20,14 +21,14 @@ class Home extends React.Component<HomeProps>{
                             quantity: 340,
                          }
                         }
-                        goToPage={goToUser}
+                        goToPage={goToRegisteredUser}
                     />
                     <HomeCard
                         element={{
                             name: 'active users',
                             quantity: 14,
                         }}
-                        goToPage={goToUser}
+                        goToPage={goToActiveUser}
                     />
                     <HomeCard
                         element={{
