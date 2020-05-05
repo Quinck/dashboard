@@ -11,13 +11,13 @@
 
 .top-charts{
     display: flex;
-    padding-left: 50px;
     max-height: 260px;
 }
 
 .donut-chart-container{
     background-color: #0E1C2F;
-    width:40%;
+    max-width:600px;
+    min-width: 320px;
 }
 
 .donut-data-container{
@@ -26,7 +26,8 @@
 
 .bar-chart-container{
     background-color: #0E1C2F;
-    width:55%
+    max-width: 1000px;
+    min-width: 600px;
 }
 
 .donut-chart-content{
@@ -127,3 +128,14 @@ padding-bottom: 1.5px;
     display: flex;
     justify-content: center;
 }   
+
+.apexcharts-canvas {
+    width: 200px !important;
+    height: 100px !important;
+}
+
+@media screen and (max-width: 1400px) {
+    .apexcharts-canvas {
+        display: none !important;
+    }
+}
