@@ -1,22 +1,22 @@
 import * as React from 'react';
 import './home-card.css';
-import { ElementType } from '../../models/element';
 
 export interface HomeCardProps {
-    element: ElementType;
-    goToPage: () => void;
+    icon: any;
+    topic: string;
+    action: () => void;
 }
 
 const HomeCard = (props: HomeCardProps) => {
-    const { element, goToPage } = props;
+    const { icon, topic, action } = props;
     return (
-        <div className='home-card-container' onClick={goToPage}>
+        <div className='home-card-container' onClick={action}>
             <div className='home-card-content'>
-                <div className='name'>
-                    {element.name}: 
+                <div className='home-card-icon'>
+                    <img src={icon} alt={'homeCardIcon'}/>
                  </div>
-                <div className='quantity'>
-                    {element.quantity}
+                <div className='home-card-topic'>
+                    {topic}
                 </div>
             </div>
         </div>

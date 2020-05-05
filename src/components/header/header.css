@@ -2,50 +2,58 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #0066cc;
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
-    height: 70px;
-    position: fixed;
+    background-color: #061325;
+    height: 90px;
     width: 100%;
-    z-index: 10;
 }
 
 .header-container .user-area{
     display: flex;
     align-items: center;
-    font-family: 'Comic Sans MS';
-    font-size: 16px;
+    font-size: 18px;
+    font-family: 'Typo Grotesk';
+    color: #F2F2F2;
 }
 
 .header-container .user-area .logged-username{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-right: 14px;
+}
+
+.logo-container{
+    display: flex;
+    align-items: flex-end;
 }
 
 .header-logo{
     width: 60px;
-    padding-left: 5px;
+    padding-left:15px;
 }
 
-.header-logo:hover {
-  cursor: pointer;
-  width: 65px;
-  padding-bottom: 2px;
+.header-title{
+    font-size: 30px;
+    font-family: 'Typo Grotesk';
+    color: #F2F2F2;
+    font-weight: bold;
+    padding-left: 15px;
+}
+
+.header-user-icon-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #122745;
+    border-radius: 100%;
+    margin-right: 14px;
 }
 
 .header-user-icon{
-    width: 50px;
+    width: 40px;
     height: 50px;
     padding-right: 5px;
     padding-left: 5px;
-}
-
-.header-user-icon:hover {
-  cursor: pointer;
-  width: 55px;
-  height: 55px;
-  padding-bottom: 2px;
 }
 
 .logout-container {
@@ -72,10 +80,4 @@
 
 .logout-content .logout-icon {
     width: 30px;
-}
-
-.logout-content:hover {
-  cursor: pointer;
-  font-size: 18px;
-  padding-bottom: 2px;
 }

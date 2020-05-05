@@ -1,9 +1,21 @@
 .base-page-container{
     min-height: 100vh;
-    background-color: #F5F5F5;
+    background-color: #061325;
 }
+
+.base-page-content{
+    display: flex;
+}
+
+.navigation-bar-container{
+    padding-top: 10px;
+}
+
 .base-page-component{
-    padding-top: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .loading-modal-container{

@@ -1,11 +1,4 @@
-.home-container{
-    height: 100%;
-}
-
 .home-content{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 100px;
+    font-size: 50px;
+    color: white;
 }

@@ -1,35 +1,35 @@
 .home-card-container{
     display: flex;
-    background-color: #A9A9A9;
-    font-family: Roboto;
-    font-size: 24px;
-    height: 100px;
-    width: 400px;
+    font-family: 'Typo Grotesk';
+    align-items: center;
+    font-size: 16px;
+    height: 40px;
+    width: 200px;
     border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     margin:8px;
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+    color: #F2F2F2;
 }
 
 .home-card-container:hover{
-    height: 102px;
-    width: 410px;
     cursor: pointer;
+    color: yellow;
+}
+
+.home-card-icon{
+    width: 30px;
+    padding-right: 10px;
 }
 
 .home-card-content{
     width: 100%;
     display: flex;
+    align-items: center;
 }
 
 
-.home-card-container .name{
+.home-card-container .home-card-icon{
     padding-left: 18px;
-}
-
-.home-card-container .quantity{
-    padding-right: 18px;
-    padding-left: 6px;
 }
