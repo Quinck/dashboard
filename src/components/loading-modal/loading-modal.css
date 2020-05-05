@@ -1,12 +1,12 @@
 .loading-modal{
     width: 350px;
     height: 350px;
-    background-color:#DCDCDC;
+    background-color:#061325
+;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 10px 10px 5px 0px rgba(168,159,168,1);
 }
 
 .loading-image{
@@ -16,5 +16,34 @@
 }
 .loading-modal-container .loading-message{
     padding-top: 30px;
+    font-family: 'Typo Grotesk';
     font-weight: bold;
+    font-size: 20px;
+    color: #F2F2F2;
+}
+
+.loading-modal-container .loading-text{
+    display: flex;
+    font-family: 'Typo Grotesk';
+    font-weight: bold;
+    font-size: 40px;
+    color: #F2F2F2;
+    padding-top:20px;
+}
+
+.loading-logo-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.loading-logo {
+    width: 80px;
+    height: 80px;
+}
+
+.loading-image{
+    width: 40px;
+    height: 40px;
+    padding-right: 5px;
+    padding-left: 5px;
 }

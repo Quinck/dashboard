@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './loading-modal.css';
-import loadingImage from '../../assets/loading-gears.gif';
+import loadingImage from '../../assets/loading-modal-icon.gif';
+import logo from '../../assets/logo.png';
 
 export interface LoadingModal {
     loadingMessage: string;
@@ -11,8 +12,11 @@ const LoadingModal = (props: LoadingModal) => {
     return (
         <div className='loading-modal'>
             <div className='loading-modal-content'>
-                <div className='loading-image'>
-                    <img src={loadingImage} alt="loadingImage"/>
+                <div className='loading-logo-container'>
+                    <img className='loading-logo' src={logo} alt="logo" />
+                </div>
+                <div className='loading-text'>
+                    <div>L </div> <img className='loading-image' src={loadingImage} alt="loadingImage" /> <div>A D I N G</div>
                 </div>
                 <div className='loading-message'>
                     {loadingMessage}

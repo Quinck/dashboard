@@ -177,7 +177,7 @@ class UserContainer extends React.Component<{}, UserContainerState>{
                         />
                 }
                 loadingData={this.state.loadingData}
-                loadingMessage={'downloading user data, please wait...'}
+                loadingMessage={'Please wait a few seconds'}
             /> 
         )
     }
