@@ -7,19 +7,19 @@ export class UserService {
     
     async getRegisteredUsers(): Promise<UserType[]>{
         return new Promise<UserType[]>((resolve)=>{
-            setTimeout(() => resolve(registeredUsersData.users), 500)
+            setTimeout(() => resolve(registeredUsersData.users), 0)
         });
     }
 
     async getActiveUsers(): Promise<UserType[]> {
         return new Promise<UserType[]>((resolve) => {
-            setTimeout(() => resolve(activeUsersData.users), 500)
+            setTimeout(() => resolve(activeUsersData.users), 0)
         });
     }
 
     async getCompleteUserInfo(userId: string): Promise<UserCompleteType> {
         return new Promise<UserCompleteType>((resolve) => {
-            setTimeout(() => resolve(mockedUsersDB.users.find((user) => user.userInfo.userId === userId)), 500)
+            setTimeout(() => resolve(mockedUsersDB.users.find((user) => user.userInfo.userId === userId)), 0)
         });
     }
 }

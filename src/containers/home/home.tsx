@@ -1,18 +1,57 @@
 import * as React from 'react'
 import './home.css';
+import Chart from "react-apexcharts";
 
 interface HomeProps {
-    content: string;
+    donutSeries: any;
+    donutOptions: any;
+    donutActiveUserSelected: boolean;
+    donutToggle: () => void;
+    barSeries: any;
+    barOptions: any
 }
 
 class Home extends React.Component<HomeProps>{
 
     public render() {
-        const { content } = this.props;
+        const { donutSeries, donutOptions, donutActiveUserSelected, donutToggle, barSeries, barOptions } = this.props;
         return (
             <div className='home-container'>
                 <div className='home-content'> 
-                    {content}
+                    <div className='top-charts'>
+                        <div className='donut-chart-container chart-container'>
+                            <div className='donut-data-container'>
+                                <div className='header'>
+                                    <div className='title'> Users Gender </div>
+                                    <div className='data-box' onClick={donutToggle}> 
+                                        <div>{donutActiveUserSelected ?'active users' : 'registered users'} </div>
+                                    </div>
+                                </div>
+                                <div className='data-label'>
+                                    <div className='female-dot' />
+                                    <div className='label-pecentage'>  
+                                        <div className='label'>Female</div>
+                                        <div className='percentage'>36%</div>
+                                    </div>
+                                </div>
+                                <div className='data-label'>
+                                    <div className='male-dot' />
+                                    <div className='label-pecentage'>
+                                        <div className='label'> Male </div>
+                                        <div className='percentage'> 64% </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='donut-chart-content'>
+                                <Chart options={donutOptions} series={donutSeries} type="donut" />
+                            </div>
+                        </div>
+                        <div className='bar-chart-container chart-container'>
+                            <div className='bar-chart-content'>
+                                <Chart options={barOptions} series={barSeries} type="bar" height={250}  />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
