@@ -124,7 +124,6 @@ padding-bottom: 1.5px;
 
 .data-box{
     cursor: pointer;
-    width: 120px;
     display: flex;
     justify-content: center;
 }   

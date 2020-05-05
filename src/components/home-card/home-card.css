@@ -15,7 +15,11 @@
 
 .home-card-container:hover{
     cursor: pointer;
-    color: yellow;
+    color: #1B95D6;
+}
+
+.home-card-container:hover img{
+    width: 32px;
 }
 
 .home-card-icon{

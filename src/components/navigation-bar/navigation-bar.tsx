@@ -3,7 +3,7 @@ import './navigation-bar.css';
 import HomeCard from '../../components/home-card/home-card';
 import userRegisteredIcon from '../../assets/user-registered-icon.svg';
 import stationIcon from '../../assets/station-icon.svg';
-import userIcon from '../../assets/user-icon.svg';
+import activeUserIcon from '../../assets/active-user-icon.svg';
 import logoutIcon from '../../assets/logout-icon.svg';
 import dashboardIcon from '../../assets/dashboard-icon.svg';
 
@@ -28,7 +28,7 @@ class NavigationBar extends React.Component<NavigationBarProps>{
                         action={goToDashboard}
                     />
                     <HomeCard
-                        icon={userIcon}
+                        icon={activeUserIcon}
                         topic={'Active users'}
                         action={goToActiveUser}
                     />
