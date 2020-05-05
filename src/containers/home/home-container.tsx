@@ -9,7 +9,16 @@ interface HomeContainerState {
     activeUsers: UserType[];
     registeredUsers: UserType[];
     donutActiveUserSelected: boolean;
+    donutMaleActive: number;
+    donutFemaleActive: number;
+    donutMaleRegistered: number;
+    donutFemaleRegistered: number;
+    donutMalePercentageActive: number;
+    donutFemalePercentageActive: number;
+    donutMalePercentageRegistered: number;
+    donutFemalePercentageRegistered: number;
 }
+
 
 
 
@@ -22,7 +31,15 @@ class HomeContainer extends React.Component<{}, HomeContainerState>{
         this.state = {
             activeUsers: [],
             registeredUsers: [],
-            donutActiveUserSelected: true
+            donutActiveUserSelected: true,
+            donutMaleActive: 1,
+            donutFemaleActive: 1,
+            donutMaleRegistered: 1,
+            donutFemaleRegistered: 1,
+            donutMalePercentageActive: 50,
+            donutFemalePercentageActive: 50,
+            donutMalePercentageRegistered: 50,
+            donutFemalePercentageRegistered: 50
         }
     }
 
@@ -31,6 +48,7 @@ class HomeContainer extends React.Component<{}, HomeContainerState>{
             this.setState({registeredUsers}, ()=>{
                 this.userService.getActiveUsers().then((activeUsers) => {
                     this.setState({ activeUsers });
+                    this.retrieveMaleFemaleDonut();
                 })
             });
         })
@@ -40,9 +58,31 @@ class HomeContainer extends React.Component<{}, HomeContainerState>{
         this.setState({ donutActiveUserSelected: !this.state.donutActiveUserSelected });
     }
     
+    retrieveMaleFemaleDonut = () => {     
+        const donutMaleActive = this.state.activeUsers.filter((user) => user.sex == 'M').length;
+        console.log('donutMaleActive: ', donutMaleActive);
+        const donutFemaleActive = this.state.activeUsers.filter((user) => user.sex == 'F').length;
+        const donutMaleRegistered = this.state.registeredUsers.filter((user) => user.sex == 'M').length;
+        const donutFemaleRegistered = this.state.registeredUsers.filter((user) => user.sex == 'F').length;
+
+        this.setState({
+            donutMaleActive,
+            donutFemaleActive,
+            donutMaleRegistered,
+            donutFemaleRegistered,
+            donutMalePercentageActive: Math.round(donutMaleActive * 100 / (donutMaleActive + donutFemaleActive)),
+            donutFemalePercentageActive: Math.round(donutFemaleActive * 100 / (donutMaleActive + donutFemaleActive)),
+            donutMalePercentageRegistered: Math.round(donutMaleRegistered * 100 / (donutMaleRegistered + donutFemaleRegistered)),
+            donutFemalePercentageRegistered: Math.round(donutFemaleRegistered * 100 / (donutMaleRegistered + donutFemaleRegistered))
+        });
+            
+    }
+
     public render(){
 
-        const donutSeries = [64, 36];
+        const donutSeries = this.state.donutActiveUserSelected ? 
+            [this.state.donutMaleActive, this.state.donutFemaleActive] : 
+            [this.state.donutMaleRegistered, this.state.donutFemaleRegistered] ;
         const donutOptions = {
             chart: {
                 type: 'donut',

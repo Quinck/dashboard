@@ -9,12 +9,18 @@ interface HomeProps {
     donutToggle: () => void;
     barSeries: any;
     barOptions: any
+    donutMalePercentageActive: number;
+    donutFemalePercentageActive: number;
+    donutMalePercentageRegistered: number;
+    donutFemalePercentageRegistered: number;
 }
 
 class Home extends React.Component<HomeProps>{
 
     public render() {
-        const { donutSeries, donutOptions, donutActiveUserSelected, donutToggle, barSeries, barOptions } = this.props;
+        const { donutSeries, donutOptions, donutActiveUserSelected, donutToggle, barSeries, barOptions,
+            donutMalePercentageActive, donutFemalePercentageActive, donutMalePercentageRegistered,
+            donutFemalePercentageRegistered } = this.props;
         return (
             <div className='home-container'>
                 <div className='home-content'> 
@@ -31,14 +37,14 @@ class Home extends React.Component<HomeProps>{
                                     <div className='female-dot' />
                                     <div className='label-pecentage'>  
                                         <div className='label'>Female</div>
-                                        <div className='percentage'>36%</div>
+                                        <div className='percentage'>{donutActiveUserSelected ? donutFemalePercentageActive : donutFemalePercentageRegistered }%</div>
                                     </div>
                                 </div>
                                 <div className='data-label'>
                                     <div className='male-dot' />
                                     <div className='label-pecentage'>
                                         <div className='label'> Male </div>
-                                        <div className='percentage'> 64% </div>
+                                        <div className='percentage'> {donutActiveUserSelected ? donutMalePercentageActive : donutMalePercentageRegistered}% </div>
                                     </div>
                                 </div>
                             </div>

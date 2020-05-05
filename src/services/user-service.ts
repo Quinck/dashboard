@@ -7,13 +7,13 @@ export class UserService {
     
     async getRegisteredUsers(): Promise<UserType[]>{
         return new Promise<UserType[]>((resolve)=>{
-            setTimeout(() => resolve(registeredUsersData.users), 2000)
+            setTimeout(() => resolve(registeredUsersData.users), 500)
         });
     }
 
     async getActiveUsers(): Promise<UserType[]> {
         return new Promise<UserType[]>((resolve) => {
-            setTimeout(() => resolve(activeUsersData.users), 2000)
+            setTimeout(() => resolve(activeUsersData.users), 500)
         });
     }
 
