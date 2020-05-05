@@ -66,11 +66,11 @@ class HomeContainer extends React.Component<{}, HomeContainerState>{
     }
     
     retrieveMaleFemaleDonut = () => {     
-        const donutMaleActive = this.state.activeUsers.filter((user) => user.sex == 'M').length;
+        const donutMaleActive = this.state.activeUsers.filter((user) => user.sex === 'M').length;
         console.log('donutMaleActive: ', donutMaleActive);
-        const donutFemaleActive = this.state.activeUsers.filter((user) => user.sex == 'F').length;
-        const donutMaleRegistered = this.state.registeredUsers.filter((user) => user.sex == 'M').length;
-        const donutFemaleRegistered = this.state.registeredUsers.filter((user) => user.sex == 'F').length;
+        const donutFemaleActive = this.state.activeUsers.filter((user) => user.sex === 'F').length;
+        const donutMaleRegistered = this.state.registeredUsers.filter((user) => user.sex === 'M').length;
+        const donutFemaleRegistered = this.state.registeredUsers.filter((user) => user.sex === 'F').length;
 
         this.setState({
             donutMaleActive,

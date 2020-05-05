@@ -8,7 +8,7 @@ export default {
         {
             "userId": "89311203",
             "age": 41,
-            "sex": "F"
+            "sex": "M"
         },
         {
             "userId": "31214960",

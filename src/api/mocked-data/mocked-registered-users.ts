@@ -33,7 +33,7 @@ export default {
         {
             "userId": "71372654",
             "age": 33,
-            "sex": "F"
+            "sex": "M"
         },
         {
             "userId": "91372654",
@@ -43,7 +43,7 @@ export default {
         {
             "userId": "89311203",
             "age": 41,
-            "sex": "F"
+            "sex": "M"
         },
         {
             "userId": "19311203",
