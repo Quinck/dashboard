@@ -6,6 +6,7 @@ import { UserService } from '../../services/user-service';
 import { UserType } from '../../models/user';
 
 interface HomeContainerState {
+    loadingData: boolean;
     activeUsers: UserType[];
     registeredUsers: UserType[];
     donutActiveUserSelected: boolean;
@@ -29,6 +30,7 @@ class HomeContainer extends React.Component<{}, HomeContainerState>{
     constructor(props: any) {
         super(props);
         this.state = {
+            loadingData:false,
             activeUsers: [],
             registeredUsers: [],
             donutActiveUserSelected: true,
@@ -44,14 +46,19 @@ class HomeContainer extends React.Component<{}, HomeContainerState>{
     }
 
     componentDidMount(){
-        this.userService.getRegisteredUsers().then((registeredUsers)=>{
-            this.setState({registeredUsers}, ()=>{
-                this.userService.getActiveUsers().then((activeUsers) => {
-                    this.setState({ activeUsers });
-                    this.retrieveMaleFemaleDonut();
-                })
-            });
-        })
+        this.setState({
+            loadingData: true,
+        }, () => {
+            this.userService.getRegisteredUsers().then((registeredUsers) => {
+                this.setState({ registeredUsers }, () => {
+                    this.userService.getActiveUsers().then((activeUsers) => {
+                        this.setState({ activeUsers, loadingData: false });
+                        this.retrieveMaleFemaleDonut();
+                    })
+                });
+            })
+        });
+        
     }
 
     donutToggle = () => {
@@ -159,6 +166,8 @@ class HomeContainer extends React.Component<{}, HomeContainerState>{
                         donutToggle={this.donutToggle}
                         />
                     }
+                    loadingData={this.state.loadingData}
+                loadingMessage={'Please wait a few seconds'}
             /> 
         )
     }
