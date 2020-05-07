@@ -1,7 +1,12 @@
-@import url(//db.onlinewebfonts.com/c/70ab20a3a59aefe8467155914e48b9d3?family=Typo+Grotesk);
-@import url(//db.onlinewebfonts.com/c/258ad9d507db85c8b03e98fa481e61cf?family=Typo+Grotesk);
-@font-face {font-family: "Typo Grotesk Bold"; src: url("//db.onlinewebfonts.com/t/70ab20a3a59aefe8467155914e48b9d3.eot"); src: url("//db.onlinewebfonts.com/t/70ab20a3a59aefe8467155914e48b9d3.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/70ab20a3a59aefe8467155914e48b9d3.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/70ab20a3a59aefe8467155914e48b9d3.woff") format("woff"), url("//db.onlinewebfonts.com/t/70ab20a3a59aefe8467155914e48b9d3.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/70ab20a3a59aefe8467155914e48b9d3.svg#Typo Grotesk") format("svg"); }
-@font-face {font-family: "Typo Grotesk"; src: url("//db.onlinewebfonts.com/t/258ad9d507db85c8b03e98fa481e61cf.eot"); src: url("//db.onlinewebfonts.com/t/258ad9d507db85c8b03e98fa481e61cf.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/258ad9d507db85c8b03e98fa481e61cf.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/258ad9d507db85c8b03e98fa481e61cf.woff") format("woff"), url("//db.onlinewebfonts.com/t/258ad9d507db85c8b03e98fa481e61cf.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/258ad9d507db85c8b03e98fa481e61cf.svg#Typo Grotesk") format("svg"); }
+@font-face {
+  font-family: "Typo Grotesk Bold";
+  src: url('./assets/fonts/typo_grotesk_bold_demo.otf') 
+ }
+
+@font-face {
+  font-family: "Typo Grotesk";
+  src: url('./assets/fonts/typo_grotesk_demo.otf')  
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
